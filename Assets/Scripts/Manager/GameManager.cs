@@ -18,15 +18,20 @@ public class GameManager : Singleton<GameManager>
         set { _monster = value; }
     }
 
+    [SerializeField] private GameObject[] monsterList;
+
     // Start is called before the first frame update
     void Start()
     {
         Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
+        SettingMonster();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SettingMonster()
     {
-        
+        float xPosition = 2.7f;
+        float yPosition = -1.5f;
+        GameObject newMonster = Instantiate(monsterList[0], new Vector3(xPosition, yPosition, 0f), Quaternion.identity);
+        Monster = newMonster.GetComponent<Monster>();
     }
 }

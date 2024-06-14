@@ -9,19 +9,14 @@ public class Monster : MonoBehaviour
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxGold;
     [SerializeField] private float currentGold;
-    private Animator animator;
 
     public GameObject Idle;
     public GameObject Hit;
 
-    private Coroutine hitCoroutine;
-    private Coroutine dieCoroutine;
-
 
     private void Awake()
     {
-        GameManager.Instance.Monster = this;
-        animator = GetComponent<Animator>();
+        // GameManager.Instance.Monster = this;
     }
 
     private void Start()
