@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 138849133080236325}
   - component: {fileID: 4341065656853127089}
   - component: {fileID: 7832398510678943544}
+  - component: {fileID: 4683685941531754790}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -628,7 +629,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 138849133080236325}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
-        m_MethodName: OnAttack
+        m_MethodName: OnClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -683,6 +684,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   damage: 10
+  attack: {fileID: 0}
+--- !u!114 &4683685941531754790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441056682432369473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122034bf1d53be94fbd198ccf37e5b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6575075955043560289
 GameObject:
   m_ObjectHideFlags: 0
