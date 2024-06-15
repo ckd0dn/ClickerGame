@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,11 +8,32 @@ public class Monster : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set
+        {
+            if (value <= 0)
+            {
+                currentHealth = 0;
+            }
+            else
+            {
+                currentHealth = value;
+            }
+        }
+    }
+
+
     [SerializeField] private float maxGold;
     [SerializeField] private float currentGold;
+    public string name;
+    public bool isDie = false;
 
     public GameObject Idle;
     public GameObject Hit;
+
 
 
     private void Awake()
@@ -21,21 +43,29 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
-        currentGold = maxGold;
+        SetMonsterData();
 
         UIManager.Instance.monsterHpUI.UpdateUI();
     }
 
+    public void SetMonsterData()
+    {
+        int stageIdx = GameManager.Instance.stageIdx;
+        float stagePower = GameManager.Instance.stagePower;
+
+        CurrentHealth = maxHealth + (maxHealth * (stageIdx-1) * stagePower);
+        currentGold = maxGold + (maxGold * (stageIdx - 1) * stagePower);
+    }
+
     public void DecreaseHealth(float damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
 
         UIManager.Instance.monsterHpUI.UpdateUI();
 
         // 죽음
         
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }
@@ -53,13 +83,9 @@ public class Monster : MonoBehaviour
         UIManager.Instance.goldUI.UpdateUI();
     }
 
-    public void ChangeMonster()
-    {
-
-    }
-
     public IEnumerator OnHit()
     {
+
         Idle.SetActive(false);
         Hit.SetActive(true);
 
@@ -87,6 +113,7 @@ public class Monster : MonoBehaviour
 
     private void Die()
     {
+        isDie = true;
         StartCoroutine(DieCoroutine());
     }
 
@@ -106,18 +133,20 @@ public class Monster : MonoBehaviour
             }
             yield return new WaitForSeconds(decreaseA);
         }   
-
-        gameObject.SetActive(false);
+        // 몬스터 파괴
+        Destroy(gameObject);
+        // 죽으면 다음 몬스터 소환
+        GameManager.Instance.NextMonster();
     }
 
     public float GetCurrentHp()
     {
-        return currentHealth;
+        return CurrentHealth;
     }
 
     public float GetCurrentHpPercentage()
     {
-        return currentHealth / maxHealth;
+        return CurrentHealth / maxHealth;
     }
 
 

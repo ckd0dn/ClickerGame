@@ -6,6 +6,7 @@ public class MonsterHpUI : MonoBehaviour
 {
     public GameObject gameObject;
     public Image hpBar;
+    public TextMeshProUGUI name;
     public TextMeshProUGUI hpText;
 
     private void Awake()
@@ -17,5 +18,6 @@ public class MonsterHpUI : MonoBehaviour
     {
         hpBar.fillAmount = GameManager.Instance.Monster.GetCurrentHpPercentage();
         hpText.text = GameManager.Instance.Monster.GetCurrentHp().ToString();
+        name.text = GameManager.Instance.Monster.name;
     }
 }
