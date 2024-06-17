@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float gold;
+    public BigInteger gold;
     public float damage;
     public Attack attack;
 

@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Numerics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
 {
@@ -27,7 +25,7 @@ public class Monster : MonoBehaviour
 
 
     [SerializeField] private float maxGold;
-    [SerializeField] private float currentGold;
+    [SerializeField] private BigInteger currentGold;
     public string name;
     public bool isDie = false;
 
@@ -54,7 +52,7 @@ public class Monster : MonoBehaviour
         float stagePower = GameManager.Instance.stagePower;
 
         CurrentHealth = maxHealth + (maxHealth * (stageIdx-1) * stagePower);
-        currentGold = maxGold + (maxGold * (stageIdx - 1) * stagePower);
+        currentGold = (long)(maxGold + (maxGold * (stageIdx - 1) * stagePower));
     }
 
     public void DecreaseHealth(float damage)
@@ -75,7 +73,7 @@ public class Monster : MonoBehaviour
     public void DropGold(float damage)
     {
         // 데미지에 최대 체력을 나눈 만큼의 비율로 골드를 드랍
-        float dropGold = Mathf.Floor((maxGold * (damage / maxHealth)));
+        BigInteger dropGold = (long)Mathf.Floor((maxGold * (damage / maxHealth)));
         currentGold -= dropGold;
         // 플레이어 골드 추가
         GameManager.Instance.Player.gold += dropGold;

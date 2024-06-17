@@ -1,3 +1,4 @@
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,7 @@ public class GoldUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        text.text = GameManager.Instance.Player.gold.ToString();
+        BigIntegerText bigInteger = new BigIntegerText();
+        text.text = bigInteger.ToStringBigInteger(GameManager.Instance.Player.gold);
     }
 }

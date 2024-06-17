@@ -17,8 +17,9 @@ public class EnforceUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        BigIntegerText bigInteger = new BigIntegerText();
         attackDameText.text = GameManager.Instance.Player.damage.ToString();
-        attackPriceText.text = EnforceAttackPrice.ToString() + "G";
+        attackPriceText.text = bigInteger.ToStringBigInteger(EnforceAttackPrice) + "G";
     }
 
     public void LevelUpDamage()
@@ -35,7 +36,7 @@ public class EnforceUI : MonoBehaviour
 
         // 다음 강화비용 
         int addDamage = (int)Random.Range(EnforceAttackDamage/2, EnforceAttackDamage);
-        int addPrice = (int)Random.Range(EnforceAttackPrice/ 2, EnforceAttackPrice);
+        int addPrice = (int)Random.Range(EnforceAttackPrice/ 10, EnforceAttackPrice/ 2);
 
         GameManager.Instance.Player.damage += addDamage;
         EnforceAttackPrice += addPrice;
