@@ -22,8 +22,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject[] monsterList;
 
     private int currentMonsterIdx = 0;
-    private float monsterXPosition = 2.7f;
-    private float monsterYPosition = -1.5f;
 
     public int stageIdx = 1;
     public float stagePower = 0.5f;
@@ -34,6 +32,7 @@ public class GameManager : Singleton<GameManager>
         Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
         SettingMonster();
         SettingUI();
+        SettingSound();
     }
 
     private void SettingUI()
@@ -42,10 +41,14 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.enforceUI.UpdateUI();
     }
 
+    private void SettingSound()
+    {
+        AudioManager.Instance.PlayBgm(true);
+    }
+
     private void SettingMonster()
     {
-        GameObject newMonster = Instantiate(monsterList[currentMonsterIdx], new Vector3(monsterXPosition, monsterYPosition, 0f), Quaternion.identity);
-        Monster = newMonster.GetComponent<Monster>();
+        Monster = Instantiate(monsterList[currentMonsterIdx]).GetComponent<Monster>();
         Monster.SetMonsterData();
     }
 

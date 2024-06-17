@@ -531,7 +531,7 @@ Transform:
   m_GameObject: {fileID: 2272127866109824558}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -597,6 +597,7 @@ MonoBehaviour:
   maxGold: 150
   currentGold: 0
   name: BlueMonster
+  isDie: 0
   Idle: {fileID: 2272127866109824558}
   Hit: {fileID: 6012592564380415851}
 --- !u!1 &3075517230904662551
@@ -1296,7 +1297,7 @@ Transform:
   m_GameObject: {fileID: 6012592564380415851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

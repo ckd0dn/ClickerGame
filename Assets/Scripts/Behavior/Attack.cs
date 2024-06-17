@@ -17,6 +17,8 @@ public class Attack : MonoBehaviour
 
         if (GameManager.Instance.Monster != null && !GameManager.Instance.Monster.isDie)
         {
+            AudioManager.Instance.PlaySfx(0);
+
             // 몬스터의 색상이 빨개졌다가 돌아옴
             StartCoroutine(GameManager.Instance.Monster.OnHit());
 

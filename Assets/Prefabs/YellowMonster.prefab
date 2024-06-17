@@ -949,7 +949,7 @@ Transform:
   m_GameObject: {fileID: 4943640635506372573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1605,6 +1605,7 @@ MonoBehaviour:
   maxGold: 400
   currentGold: 0
   name: YellowMonster
+  isDie: 0
   Idle: {fileID: 4943640635506372573}
   Hit: {fileID: 8895364079443392415}
 --- !u!1 &8036653762615452873
@@ -1968,7 +1969,7 @@ Transform:
   m_GameObject: {fileID: 8895364079443392415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
